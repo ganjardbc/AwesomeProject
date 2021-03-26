@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, FlatList } from 'react-native'
 
 class DetailsScreen extends Component {
     constructor() {
@@ -9,13 +9,25 @@ class DetailsScreen extends Component {
     
     render() {
         const { route, navigation } = this.props
-        console.log('route', route.params)
+        const data = route.params
+        console.log('route', data)
+
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 32, marginBottom: 15 }}>Details Screen</Text>
-                <Button title="Go to Details... again" onPress={() => navigation.push('Details')} />
+            <View>
+                <FlatList 
+                    data={data}
+                    renderItem={({item}) => {
+                        return (
+                            <View>
+                                <Text>{ item.title }</Text>
+                                <Text>{ item.description }</Text>
+                            </View>
+                        )
+                    }}
+                />
+                {/* <Button title="Go to Details... again" onPress={() => navigation.push('Details')} />
                 <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
-                <Button title="Go back" onPress={() => navigation.goBack()} />
+                <Button title="Go back" onPress={() => navigation.goBack()} /> */}
             </View>
         )
     }

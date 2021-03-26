@@ -10,7 +10,8 @@ class HomeScreen extends Component {
     render() {
         const { navigation } = this.props
         const payload = [
-            {id: 1, title: 'TEST', description: 'THIS IS JUST FOR A TEST'}
+            {id: 1, title: 'TEST', description: 'THIS IS JUST FOR A TEST'},
+            {id: 2, title: 'TEST LAGI', description: 'TEST LAGI'}
         ]
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
