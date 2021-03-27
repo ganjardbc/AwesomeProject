@@ -1,39 +1,129 @@
 import React, { Component } from 'react'
-import { View, Text, Button, FlatList } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native'
+import AuthAction from '../Redux/AuthRedux'
+import { connect } from 'react-redux'
 
 class HomeScreen extends Component {
-    constructor() {
-        super()
-        state = {}
+    constructor(props) {
+        super(props)
+        this.state = {
+            user: props.auth.user
+        }
+    }
+
+    componentDidMount() {
+        if (!this.props.auth) {
+            this.props.navigation.navigate('Login')
+        } else {
+            this.setState({ user: this.props.auth.user })
+        }
+    }
+
+    onLogout() {
+        this.props.authLogout();
+        this.props.navigation.navigate('Login')
     }
     
     render() {
         const { navigation } = this.props
+        const { user } = this.props.auth
         const payload = [
             {id: 1, title: 'TEST', description: 'THIS IS JUST FOR A TEST'},
-            {id: 2, title: 'TEST LAGI', description: 'TEST LAGI'}
+            {id: 2, title: 'TEST LAGI', description: 'TEST LAGI'},
+            {id: 3, title: 'TEST', description: 'THIS IS JUST FOR A TEST'},
+            {id: 4, title: 'TEST LAGI', description: 'TEST LAGI'},
+            {id: 5, title: 'TEST', description: 'THIS IS JUST FOR A TEST'},
+            {id: 6, title: 'TEST LAGI', description: 'TEST LAGI'},
+            {id: 7, title: 'TEST', description: 'THIS IS JUST FOR A TEST'},
+            {id: 8, title: 'TEST LAGI', description: 'TEST LAGI'},
+            {id: 9, title: 'TEST', description: 'THIS IS JUST FOR A TEST'},
+            {id: 10, title: 'TEST LAGI', description: 'TEST LAGI'}
         ]
         return (
-            <View>
-                <FlatList 
-                    data={payload}
-                    renderItem={({item}) => {
+            <ScrollView>
+                <View style={styles.container}>
+                    <View style={{ alignItems: 'center' }}>
+                        <Image source={{ url: "https://i.pinimg.com/originals/5d/fe/1f/5dfe1fd80b1b7d49d88e62a52386c300.png" }} style={[styles.logo, {resizeMode: 'cover', marginBottom: 15}]} />
+                        <View style={{ alignItems: 'center' }}>
+                            <Text style={{fontWeight: 'bold', fontSize: 32, marginBottom: 5}}>{user && user.data.userName}</Text>
+                            <Text>{user && user.data.userID}</Text>
+                        </View>
+                    </View>
+                    <View style={{ alignItems: 'center', marginTop: 20 }}>
+                        <TouchableOpacity style={{ padding: 10, backgroundColor: '#07689f', borderRadius: 5 }} onPress={() => this.onLogout()}>
+                            <Text style={{ color: '#fff' }}>LOGOUT</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                <View style={{ paddingTop: 10, paddingBottom: 10 }}>
+                    {payload && payload.map((item, index) => {
                         return (
-                            <View>
-                                <View>
-                                    <Text>{ item.title }</Text>
-                                    <Text>{ item.description }</Text>
-                                </View>
-                                <View>
-                                    <Button title="Go to Details" onPress={() => navigation.navigate('Details', item)} />
-                                </View>
+                            <View style={styles.card} key={index}>
+                                    <View style={{ width: '100%', height: 200, marginBottom: 10, backgroundColor: '#f5f5f5' }}></View>
+                                    <View>
+                                        <Text style={{ fontWeight: 'bold', fontSize: 18, marginBottom: 5 }}>{ item.title }</Text>
+                                        <Text style={{ fontSize: 14, color: '#555' }}>{ item.description }</Text>
+                                    </View>
+                                    <View style={{ marginTop: 10 }}>
+                                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Details', item)}>
+                                            <Text style={styles.button_text}>VIEW DETAIL</Text>
+                                        </TouchableOpacity>
+                                    </View>
                             </View>
                         )
-                    }}
-                />
-            </View>
+                    })}
+                </View>
+            </ScrollView>
         )
     }
 }
 
-export default HomeScreen
+const styles = StyleSheet.create({
+    container: { 
+        backgroundColor: '#ffc93c', 
+        alignContent: 'center', 
+        padding: 20
+    },
+    logo: {
+        backgroundColor: '#f5f5f5',
+        width: 90,
+        height: 90,
+        borderRadius: 30
+    },
+    card: {
+        padding: 20,
+        margin: 10,
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        elevation: 5
+    },
+    button: {
+        borderRadius: 5,
+        padding: 10,
+        paddingBottom: 15,
+        paddingTop: 15,
+        backgroundColor: '#40a8c4',
+        color: '#fff',
+        alignItems: 'center',
+        elevation: 2
+    },
+    button_text: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#fff'
+    }
+})
+
+const mapStateToProps = state => {
+	return {
+		auth: state.auth
+	};
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		authLogout: () => dispatch(AuthAction.authLogout())
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

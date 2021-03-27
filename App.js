@@ -1,9 +1,10 @@
 import 'react-native-gesture-handler'
 import React, { Component } from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
-import HomeScreen from './App/Screens/HomeScreen'
-import DetailsScreen from './App/Screens/DetailsScreen'
+import { Provider } from 'react-redux'
+import createStore from './App/Redux'
+import RootContainer from './RootContainer'
+
+const store = createStore();
 
 class App extends Component {
     constructor() {
@@ -12,14 +13,10 @@ class App extends Component {
     }
 
     render() {
-        const Stack = createStackNavigator()
         return (
-            <NavigationContainer>
-                <Stack.Navigator initialRouteName="Home">
-                    <Stack.Screen name="Home" component={HomeScreen} />
-                    <Stack.Screen name="Details" component={DetailsScreen} options={{ title: 'Overview' }} />
-                </Stack.Navigator>
-            </NavigationContainer>
+            <Provider store={store}>
+                <RootContainer />
+            </Provider>
         )
     }
 }
