@@ -110,7 +110,7 @@ class LoginScreen extends Component {
                             placeholderTextColor="#999"
                             underlineColorAndroid={'transparent'} />
                         {errorPassword && (
-                            <Text style={styles.label_error}>{errorPasswordTitle ? errorUsernameTitle : 'there is an error please try again.'}</Text>
+                            <Text style={styles.label_error}>{errorPasswordTitle ? errorPasswordTitle : 'there is an error please try again.'}</Text>
                         )}
                     </View>
 
