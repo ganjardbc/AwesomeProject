@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, Button } from 'react-native'
+import { connect } from 'react-redux'
 
 class DetailsScreen extends Component {
     constructor() {
@@ -10,11 +11,13 @@ class DetailsScreen extends Component {
     render() {
         const { route, navigation } = this.props
         const data = route.params
+        const { nilai } = this.props.test
         console.log('route', data)
 
         return (
             <View>
                 <View>
+                    <Text>Nilai: { nilai }</Text>
                     <Text>{ data && data.title }</Text>
                     <Text>{ data && data.description }</Text>
                 </View>
@@ -26,4 +29,10 @@ class DetailsScreen extends Component {
     }
 }
 
-export default DetailsScreen
+const mapStateToProps = state => {
+	return {
+        test: state.test
+	};
+};
+
+export default connect(mapStateToProps, null)(DetailsScreen)
