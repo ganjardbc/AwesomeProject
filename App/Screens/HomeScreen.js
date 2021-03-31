@@ -37,6 +37,7 @@ class HomeScreen extends Component {
         const { navigation } = this.props
         const { user } = this.props.auth
         const { nilai } = this.props.test
+        const nilaiRedux = this.props.nilai.nilai
         const payload = [
             {id: 1, title: 'TEST', description: 'THIS IS JUST FOR A TEST'},
             {id: 2, title: 'TEST LAGI', description: 'TEST LAGI'},
@@ -65,14 +66,18 @@ class HomeScreen extends Component {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <Text style={{ padding: 10, paddingBottom: 0 }}>NILAI : {nilai}</Text>
+
+                <Text style={{ padding: 10, paddingBottom: 0, fontSize: 32 }}>NILAI : {nilai}</Text>
+                <Text style={{ padding: 10, paddingBottom: 0, fontSize: 32 }}>NILAI REDUX FORM SCREEN: {nilaiRedux}</Text>
                 <View style={{ flex: 1, flexDirection: 'row', padding: 10, paddingBottom: 0 }}>
                     <Button title={'20'} onPress={() => this.props.addData('20')} />
                     <Button title={'50'} onPress={() => this.props.addData('50')} />
                     <Button title={'60'} onPress={() => this.props.addData('60')} />
                     <Button title={'100'} onPress={() => this.props.addData('100')} />
                     <Button title={'REMOVE'} onPress={() => this.props.removeData()} />
+                    <Button title={'FORM'} onPress={() => navigation.push('Form', payload)} />
                 </View>
+
                 <View style={{ paddingTop: 10, paddingBottom: 10 }}>
                     {payload && payload.map((item, index) => {
                         return (
@@ -134,6 +139,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
 	return {
+        nilai: state.nilai,
 		auth: state.auth,
         test: state.test
 	};

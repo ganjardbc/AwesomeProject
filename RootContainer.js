@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import LoginScreen from './App/Screens/LoginScreen'
 import HomeScreen from './App/Screens/HomeScreen'
 import DetailsScreen from './App/Screens/DetailsScreen'
+import FormScreen from './App/Screens/FormScreen'
 
 class RootContainer extends Component {
 	componentDidMount() {
@@ -24,6 +25,7 @@ class RootContainer extends Component {
                     <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}} />
                     <Stack.Screen name="Home" component={HomeScreen} options={{headerTitleAlign: 'center', headerTitleStyle: {fontWeight: 'bold'}}} />
                     <Stack.Screen name="Details" component={DetailsScreen} />
+					<Stack.Screen name="Form" component={FormScreen} />
                 </Stack.Navigator>
             </NavigationContainer>
 		);

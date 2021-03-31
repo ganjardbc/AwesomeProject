@@ -51,7 +51,7 @@ class LoginScreen extends Component {
         if (username && password) {
             let payload = {
                 username,
-                password,
+                password
             }
             this.setState({ error: false }, () => this.props.authRequest(payload))
         }

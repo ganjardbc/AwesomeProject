@@ -7,6 +7,7 @@ import { reducer as network } from 'react-native-offline';
 
 /* ------------- Assemble The Reducers ------------- */
 export const reducers = combineReducers({
+	nilai: require('./NilaiRedux').reducer,
 	test: require('./TestRedux').reducer,
 	config: require('./ConfigRedux').reducer,
 	auth: require('./AuthRedux').reducer,
