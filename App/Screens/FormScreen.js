@@ -80,8 +80,13 @@ class FormScreen extends Component {
                     
                     <TextInput 
                         style={[styles.field, {marginBottom: 15, marginTop: 15}]} 
-                        value={nilaiInput} 
-                        onChangeText={(data) => this.props.setNilai(data === '' ? 0 : parseInt(data) )}
+                        value={nilaiInput.toString()} 
+                        textContentType={'none'}
+                        keyboardType={'numeric'}
+                        onChangeText={(data) => {
+                            this.setState({nilaiInput: data})
+                            this.props.setNilai(data === '' ? 0 : parseInt(data))
+                        }}
                         placeholder={'nilai redux'} 
                         returnKeyType={"done"} 
                         placeholderTextColor="#999" />
