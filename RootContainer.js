@@ -27,7 +27,7 @@ class RootContainer extends Component {
                     <Stack.Screen name="Home" component={HomeScreen} options={{headerTitleAlign: 'center', headerTitleStyle: {fontWeight: 'bold'}}} />
                     <Stack.Screen name="Details" component={DetailsScreen} />
 					<Stack.Screen name="Form" component={FormScreen} />
-					<Stack.Screen name="Material" component={MaterialScreen} />
+					<Stack.Screen name="MaterialList" component={MaterialScreen} />
                 </Stack.Navigator>
             </NavigationContainer>
 		);

@@ -14,7 +14,7 @@ class CardMaterial extends Component {
         console.log('---')
         console.log('CardMaterial', data)
         return (
-            <View style={{ padding: 10, margin: 10, backgroundColor: '#fff', elevation: 5 }}>
+            <View style={{ padding: 10, margin: 10, backgroundColor: '#fff', elevation: 10 }}>
                 <View style={{flexDirection: 'row', marginBottom: 5}}>
                     <Text style={{width: 80}}>ID</Text>
                     <Text>: {data && data.materialID}</Text>

@@ -78,7 +78,7 @@ class HomeScreen extends Component {
                 </View>
                 <View style={{ flex: 1, flexDirection: 'row', padding: 10, paddingBottom: 0 }}>
                     <Button title={'FORM'} onPress={() => navigation.push('Form', payload)} />
-                    <Button title={'MATERIAL'} onPress={() => navigation.push('Material')} />
+                    <Button title={'MATERIAL'} onPress={() => navigation.push('MaterialList')} />
                 </View>
 
                 <View style={{ paddingTop: 10, paddingBottom: 10 }}>
