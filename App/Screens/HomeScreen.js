@@ -13,10 +13,10 @@ class HomeScreen extends Component {
     }
 
     componentDidMount() {
-        const {test} = this.props
+        const {test, auth} = this.props
         console.log('componentDidMount', test)
 
-        if (!this.props.auth) {
+        if (!this.props.auth.user) {
             this.props.navigation.navigate('Login')
         } else {
             this.setState({ user: this.props.auth.user })
@@ -54,7 +54,7 @@ class HomeScreen extends Component {
             <ScrollView>
                 <View style={styles.container}>
                     <View style={{ alignItems: 'center' }}>
-                        <Image source={{ url: "https://i.pinimg.com/originals/5d/fe/1f/5dfe1fd80b1b7d49d88e62a52386c300.png" }} style={[styles.logo, {resizeMode: 'cover', marginBottom: 15}]} />
+                        <Image source={{ uri: "https://i.pinimg.com/originals/5d/fe/1f/5dfe1fd80b1b7d49d88e62a52386c300.png" }} style={[styles.logo, {resizeMode: 'cover', marginBottom: 15}]} />
                         <View style={{ alignItems: 'center' }}>
                             <Text style={{fontWeight: 'bold', fontSize: 32, marginBottom: 5}}>{user && user.data.userName}</Text>
                             <Text>{user && user.data.userID}</Text>

@@ -64,7 +64,7 @@ class LoginScreen extends Component {
             <View style={styles.container}>
                 <View>
                     <View style={{alignItems: 'center', marginBottom: 50}}>
-                        <Image source={{ url: "https://i.pinimg.com/originals/5d/fe/1f/5dfe1fd80b1b7d49d88e62a52386c300.png" }} style={[styles.logo, {resizeMode: 'cover'}]} />
+                        <Image source={{ uri: "https://i.pinimg.com/originals/5d/fe/1f/5dfe1fd80b1b7d49d88e62a52386c300.png" }} style={[styles.logo, {resizeMode: 'cover'}]} />
                     </View>
 
                     {error && (
