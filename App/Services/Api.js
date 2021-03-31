@@ -25,10 +25,26 @@ const create = () => {
         timeout: 30000
     })
 
+    let apimaterial = apisauce.create({
+        baseURL: url + 'material/',
+        headers: {
+            'Content-Type': 'application/json',
+            // 'DGI-API-KEY': Config.APP_WMS_AUTH_HEADER_VALUE
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiJ9.5BG9SEVOGo_xRhtT8IkyoSy60kPg8HM9Vpvb0TdNew4'
+        },
+        timeout: 30000
+    })
+
     const userAuth = body => apiwms.post('user.auth', body)
 
+    // material => put, get, post, delete
+    const getMaterialMaster = body => apimaterial.post('get.material.param.search', body)
+    const getCountMaterialMaster = body => apimaterial.post('get.count.material.param.search', body)
+
     return {
-        userAuth
+        userAuth,
+        getMaterialMaster,
+        getCountMaterialMaster
     }
 }
 

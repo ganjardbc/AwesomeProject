@@ -13,7 +13,7 @@ class HomeScreen extends Component {
     }
 
     componentDidMount() {
-        const {test, auth} = this.props
+        const {test} = this.props
         console.log('componentDidMount', test)
 
         if (!this.props.auth.user) {
@@ -75,7 +75,10 @@ class HomeScreen extends Component {
                     <Button title={'60'} onPress={() => this.props.addData('60')} />
                     <Button title={'100'} onPress={() => this.props.addData('100')} />
                     <Button title={'REMOVE'} onPress={() => this.props.removeData()} />
+                </View>
+                <View style={{ flex: 1, flexDirection: 'row', padding: 10, paddingBottom: 0 }}>
                     <Button title={'FORM'} onPress={() => navigation.push('Form', payload)} />
+                    <Button title={'MATERIAL'} onPress={() => navigation.push('Material')} />
                 </View>
 
                 <View style={{ paddingTop: 10, paddingBottom: 10 }}>

@@ -7,6 +7,7 @@ import LoginScreen from './App/Screens/LoginScreen'
 import HomeScreen from './App/Screens/HomeScreen'
 import DetailsScreen from './App/Screens/DetailsScreen'
 import FormScreen from './App/Screens/FormScreen'
+import MaterialScreen from './App/Screens/MaterialScreen'
 
 class RootContainer extends Component {
 	componentDidMount() {
@@ -26,6 +27,7 @@ class RootContainer extends Component {
                     <Stack.Screen name="Home" component={HomeScreen} options={{headerTitleAlign: 'center', headerTitleStyle: {fontWeight: 'bold'}}} />
                     <Stack.Screen name="Details" component={DetailsScreen} />
 					<Stack.Screen name="Form" component={FormScreen} />
+					<Stack.Screen name="Material" component={MaterialScreen} />
                 </Stack.Navigator>
             </NavigationContainer>
 		);
